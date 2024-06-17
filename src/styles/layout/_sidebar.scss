@@ -1,0 +1,29 @@
+.sidebar {
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+
+    h4,
+    a {
+        color: white;
+        text-decoration: none;
+        margin-top: 2rem;
+        padding: 1.3rem 0.8rem;
+        margin: 0.3rem;
+        font-size: 1rem;
+        font-weight: 300;
+        border-radius: 0.2rem;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: yellow;
+            color: black;
+            letter-spacing: 0.3rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+    }
+}

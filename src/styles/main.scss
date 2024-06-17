@@ -1,0 +1,28 @@
+// Abstracts
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+// Base
+@import 'base/reset';
+@import 'base/typography';
+
+// Layout
+@import 'layout/header';
+@import 'layout/sidebar';
+@import 'layout/grid';
+
+// Components
+@import 'components/buttons';
+@import 'components/forms';
+
+// Pages
+@import 'pages/home';
+@import 'pages/formComponent';
+
+// Themes
+@import 'themes/theme';
+
+.app {
+    height: 100vh;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.8) 100%);
+}
