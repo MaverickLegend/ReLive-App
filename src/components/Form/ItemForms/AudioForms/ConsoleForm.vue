@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <form class="form-container">
+        <CommonForm />
         <div class="inputs">
             <label for="consoleType">Tipo:</label>
             <select v-model="selectedConsoleType" id="consoleType">
@@ -11,16 +12,15 @@
             <input v-model="selectedChannels" type="number">
         </div>
         <button class="btn">Agregar artículo</button>
-    </div>
+    </form>
 </template>
 
 <script setup lang="ts">
 
 import { useCategoryStore } from '@/stores/categoryStore';
-import type { Item } from '@/types/interfaces';
 import { ref } from 'vue';
+import CommonForm from '../CommonForm.vue';
 
-const props = defineProps<Item>();
 
 const { consoleType } = useCategoryStore().audioCategories;
 

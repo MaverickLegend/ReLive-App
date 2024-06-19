@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div v-if="selectedCategory === ''" class="categories">
-            <button class="categories-item" v-for="(category, index) in audioCategories.audioTypeCat" :key="index"
+            <button class="categories-item" v-for="(category, index) in energyCategories.category" :key="index"
                 @click="selectCategory(category.value)"> {{
                     category.label }}
             </button>
@@ -13,16 +13,14 @@
 </template>
 
 <script setup lang="ts">
-import { useCategoryStore } from '@/stores/categoryStore';
 import { ref, computed } from 'vue';
-import MicForm from './AudioForms/MicForm.vue';
-import SpeakerForm from './AudioForms/SpeakerForm.vue';
-import ConsoleForm from './AudioForms/ConsoleForm.vue';
-import OthersForm from './AudioForms/OthersForm.vue';
-
+import { useCategoryStore } from '@/stores/categoryStore';
+import BoardForm from './EnergyForms/BoardForm.vue';
+import GeneratorForm from './EnergyForms/GeneratorForm.vue';
+import OthersForm from './EnergyForms/OthersForm.vue';
 
 const categoryStore = useCategoryStore();
-const { audioCategories } = categoryStore;
+const { energyCategories } = categoryStore;
 const selectedCategory = ref('');
 
 const selectCategory = (categoryValue: string) => {
@@ -31,12 +29,10 @@ const selectCategory = (categoryValue: string) => {
 
 const currentComponent = computed(() => {
     switch (selectedCategory.value) {
-        case 'Microphone':
-            return MicForm;
-        case 'Speaker':
-            return SpeakerForm;
-        case 'Console':
-            return ConsoleForm;
+        case 'Board':
+            return BoardForm;
+        case 'Generator':
+            return GeneratorForm;
         case 'Others':
             return OthersForm;
         default:
@@ -44,7 +40,4 @@ const currentComponent = computed(() => {
     }
 });
 
-
 </script>
-
-<style scoped></style>

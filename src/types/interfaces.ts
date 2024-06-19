@@ -1,9 +1,9 @@
 export interface Item {
-    id: number; // Identificador único
+    id: string; // Identificador único
     model: string; // Modelo
     brand: string; // Marca
     quantity: number; // Cantidad
-    type: string; // Audio, energía, iluminación, video, otros
+    category: string; // Audio, energía, iluminación, video, otros
 }
 
 export interface AudioItem extends Item {

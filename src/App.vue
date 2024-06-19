@@ -14,7 +14,7 @@ import './styles/main.scss'
         <div class="nav-links">
           <RouterLink to="/">Home</RouterLink>
           <RouterLink to="/about">About</RouterLink>
-          <RouterLink to="/inventory/add-article">Add Article</RouterLink>
+          <RouterLink to="/inventory/add-article">Agregar artículo</RouterLink>
         </div>
       </nav>
     </header>

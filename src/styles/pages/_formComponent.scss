@@ -5,6 +5,7 @@
     flex-direction: column;
     align-items: center;
     padding: 2rem;
+    width: 100%;
 
     .categories {
         display: grid;
@@ -23,6 +24,7 @@
             height: 10rem;
             padding: 8rem;
             border: 1px solid gray;
+            background-image: $gradient-white-light-gray;
             border-radius: 5px;
             text-align: center;
             transition: all 0.3s ease;
@@ -30,13 +32,11 @@
             cursor: pointer;
 
             &:hover {
-                background-color: yellow;
+                background: $gradient-yellow-gold;
                 color: black;
                 letter-spacing: 0.5rem;
                 font-size: 1.3rem;
             }
         }
     }
-
-
 }

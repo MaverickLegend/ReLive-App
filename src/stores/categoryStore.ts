@@ -12,6 +12,7 @@ interface Categories {
         polarPattern: Category[];
         speakerType: Category[];
         consoleType: Category[];
+        connectionType: Category[];
     };
     energyCategories: {
         category: Category[];
@@ -22,7 +23,8 @@ interface Categories {
     lightingCategories: {
         category: Category[];
         focusType: Category[];
-        power: Category[];
+        energyType: Category[];
+        energyConnection: Category[];
     };
     videoCategories: {
         category: Category[];
@@ -67,6 +69,11 @@ export const useCategoryStore = defineStore('categoryStore', {
                 { label: 'Digital', value: 'Digital' },
                 { label: 'Análogo', value: 'Analog' },
             ],
+            connectionType: [
+                { label: 'SpeakOn', value: 'SpeakOn' },
+                { label: 'PowerCon', value: 'PowerCon' },
+                { label: 'Interlock', value: 'Interlock' },
+            ],
         },
         energyCategories: {
             category: [
@@ -95,7 +102,7 @@ export const useCategoryStore = defineStore('categoryStore', {
         },
         lightingCategories: {
             category: [
-                { label: 'Seguidor', value: 'Follower' },
+                { label: 'Foco', value: 'Focus' },
                 { label: 'Consola', value: 'Console' },
                 { label: 'Otros', value: 'Others' },
             ],
@@ -105,14 +112,22 @@ export const useCategoryStore = defineStore('categoryStore', {
                 { label: 'Cob', value: 'Cob' },
                 { label: 'Beam', value: 'Beam' },
                 { label: 'Wash', value: 'Wash' },
+                { label: 'Spot', value: 'Spot' },
+                { label: 'Strobe', value: 'Strobe' },
+                { label: 'Laser', value: 'Laser' },
             ],
-            power: [
-                { label: '50', value: '50' },
-                { label: '100', value: '100' },
-                { label: '200', value: '200' },
-                { label: '400', value: '400' },
-                { label: '800', value: '800' },
-                { label: '1000', value: '1000' },
+            energyType: [
+                { label: 'LED', value: 'LED' },
+                { label: 'Halógeno', value: 'Halogen' },
+                { label: 'Incandescente', value: 'Incandescent' },
+                { label: 'Láser', value: 'Laser' },
+                { label: 'Otros', value: 'Others' },
+            ],
+            energyConnection: [
+                { label: 'PowerCon', value: 'PowerCon' },
+                { label: 'Power Strip', value: 'Power Strip' },
+                { label: 'Interlock', value: 'Interlock' },
+                { label: 'Custom', value: 'Custom' },
             ],
         },
         videoCategories: {
@@ -141,6 +156,7 @@ export const useCategoryStore = defineStore('categoryStore', {
                 { label: 'TS', value: 'TS' },
                 { label: 'TRS', value: 'TRS' },
                 { label: 'BNC', value: 'BNC' },
+                { label: 'SDI', value: 'SDI' },
                 { label: 'PowerCon', value: 'PowerCon' },
                 { label: 'SpeakOn', value: 'SpeakOn' },
                 { label: 'HDMI', value: 'HDMI' },
@@ -151,6 +167,7 @@ export const useCategoryStore = defineStore('categoryStore', {
                 { label: '16 Amperes', value: '16 Amp' },
                 { label: '32 Amperes', value: '32 Amp' },
                 { label: '63 Amperes', value: '63 Amp' },
+                { label: 'Camlock', value: 'Camlock' },
                 { label: 'Power Strip', value: 'Power Strip' },
                 { label: 'Custom', value: 'Custom' },
             ],

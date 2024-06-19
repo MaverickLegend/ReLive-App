@@ -3,6 +3,26 @@ $primary-color: #007bff;
 $secondary-color: #6c757d;
 $success-color: #28a745;
 $error-color: #dc3545;
+$bg-color: #f8f9fa;
 
 // Spacing variables
-$spacing-unit: 16px;
+$spacing-unit: 0.5rem;
+
+// Colores Base
+$color-black: #000000;
+$color-white: #FFFFFF;
+$color-yellow: #F2C94C;
+
+// Gradientes
+$gradient-black-gray: linear-gradient(45deg, #000000, #434343);
+$gradient-yellow-gold: linear-gradient(45deg, #F2C94C, #E6A700);
+$gradient-white-light-gray: linear-gradient(45deg, #FFFFFF, #E5E5E5);
+
+// Colores Complementarios
+$color-dark-gray: #333333;
+$color-medium-gray: #808080;
+$color-light-gray: #BDBDBD;
+$color-dark-gold: #DAA520;
+$color-beige: #F5F5DC;
+$color-mustard-yellow: #FFDB58;
+$color-dark-green: #006400;

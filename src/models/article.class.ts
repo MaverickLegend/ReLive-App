@@ -10,18 +10,18 @@ import {
 } from '../types/interfaces';
 
 export default class Article implements Item {
-    id: number;
+    id: string;
     model: string;
     brand: string;
     quantity: number;
-    type: string;
+    category: string;
 
-    constructor(id: number, model: string, brand: string, quantity: number, type: string) {
+    constructor(id: string, model: string, brand: string, quantity: number, category: string) {
         this.id = id;
         this.model = model;
         this.brand = brand;
         this.quantity = quantity;
-        this.type = type;
+        this.category = category;
     }
 }
 
@@ -37,11 +37,11 @@ export class AudioArticle extends Article implements AudioItem {
     other?: string;
 
     constructor(
-        id: number,
+        id: string,
         model: string,
         brand: string,
         quantity: number,
-        type: string,
+        category: string,
         audioType: string,
         diameter?: number,
         power?: number,
@@ -52,7 +52,7 @@ export class AudioArticle extends Article implements AudioItem {
         channelQty?: number,
         other?: string,
     ) {
-        super(id, model, brand, quantity, type);
+        super(id, model, brand, quantity, category);
         this.audioType = audioType;
         this.diameter = diameter;
         this.power = power;
@@ -76,7 +76,7 @@ export class EnergyArticle extends Article implements EnergyItem {
     certified: boolean;
 
     constructor(
-        id: number,
+        id: string,
         model: string,
         brand: string,
         quantity: number,
@@ -108,7 +108,7 @@ export class LightingArticle extends Article implements LightingItem {
     consumption?: number;
 
     constructor(
-        id: number,
+        id: string,
         model: string,
         brand: string,
         quantity: number,
@@ -130,7 +130,7 @@ export class VideoArticle extends Article implements VideoItem {
     pixels?: string;
 
     constructor(
-        id: number,
+        id: string,
         model: string,
         brand: string,
         quantity: number,
@@ -152,7 +152,7 @@ export class StructureArticle extends Article implements StructureItem {
     diameter?: string;
 
     constructor(
-        id: number,
+        id: string,
         model: string,
         brand: string,
         quantity: number,
@@ -175,7 +175,7 @@ export class CableArticle extends Article implements CableItem {
     connector2: string;
 
     constructor(
-        id: number,
+        id: string,
         model: string,
         brand: string,
         quantity: number,
@@ -197,7 +197,7 @@ export class OtherArticle extends Article implements OtherItem {
     description: string;
 
     constructor(
-        id: number,
+        id: string,
         model: string,
         brand: string,
         quantity: number,
