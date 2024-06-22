@@ -14,7 +14,7 @@
                 <option v-for="(pattern, index) in polarPattern" :key="index">{{ pattern.label }}</option>
             </select>
         </div>
-        <button class="btn" @click="addArticle">Agregar artículo</button>
+        <button class="btn" @click="handleAddArticle">Agregar artículo</button>
     </form>
 </template>
 
@@ -23,10 +23,8 @@ import { useCategoryStore } from '@/stores/categoryStore';
 import { ref } from 'vue';
 import { v4 as uuidv4 } from 'uuid';
 import CommonForm from '../CommonForm.vue';
-import { AudioArticle } from '@/models/article.class';
-import type { AudioItem } from '@/types/interfaces';
-import { db } from '@/firebase';
-import { collection, addDoc } from 'firebase/firestore';
+import { addArticle } from '../../useAddArticle';
+import { AudioMic } from '@/models/article.class';
 
 const { micType, polarPattern } = useCategoryStore().audioCategories;
 
@@ -48,46 +46,26 @@ const updateQuantity = (value: number) => {
     quantity.value = value;
 };
 
-const addArticle = async (): Promise<AudioItem> => {
-    const newArticle = new AudioArticle(
+const handleAddArticle = async () => {
+    const newArticle = new AudioMic(
         uuidv4(),
         model.value,
         brand.value,
         quantity.value,
-        'Audio', // Tipo de artículo
-        'Microphone',
-        undefined, // diameter
-        undefined, // power
-        selectedPolarPattern.value, // polarPattern
-        selectedMicType.value, // micType
-        undefined, // speakerType
-        undefined, // consoleType
-        undefined, // channelQty
-        undefined  // other
+        'Audio', // category
+        'Microphone', // audioType
+        selectedMicType.value,
+        selectedPolarPattern.value
     );
-    try {
-        await addDoc(collection(db, 'articles'), {
-            id: newArticle.id,
-            model: newArticle.model,
-            brand: newArticle.brand,
-            quantity: newArticle.quantity,
-            category: newArticle.category,
-            audioType: newArticle.audioType,
-            micType: newArticle.micType,
-            polarPattern: newArticle.polarPattern
-        });
-        console.log('Document written with ID: ', newArticle.id);
-    } catch (error) {
-        console.error('Error adding document: ', error);
-    }
-
+    await addArticle(newArticle);
     console.log(newArticle);
+
+    // Reset form values
     model.value = '';
     brand.value = '';
     quantity.value = 0;
     selectedMicType.value = '';
     selectedPolarPattern.value = '';
-    return newArticle
 };
 
 </script>

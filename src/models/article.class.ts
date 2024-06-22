@@ -1,9 +1,14 @@
 import {
     type Item,
-    type AudioItem,
+    type AudioMicItem,
+    type AudioSpeakerItem,
+    type AudioConsoleItem,
     type EnergyItem,
-    type LightingItem,
-    type VideoItem,
+    type LightningBulbItem,
+    type LightningConsoleItem,
+    type VideoScreenItem,
+    type VideoCameraItem,
+    type VideoConsoleItem,
     type StructureItem,
     type CableItem,
     type OtherItem,
@@ -25,16 +30,12 @@ export default class Article implements Item {
     }
 }
 
-export class AudioArticle extends Article implements AudioItem {
-    audioType: string;
-    micType?: string;
-    polarPattern?: string;
-    speakerType?: string;
-    diameter?: number;
-    power?: number;
-    consoleType?: string;
-    channelQty?: number;
-    other?: string;
+// Clases de Audio
+
+export class AudioMic extends Article implements AudioMicItem {
+    audioCategory: string;
+    micType: string;
+    polarPattern: string;
 
     constructor(
         id: string,
@@ -43,25 +44,118 @@ export class AudioArticle extends Article implements AudioItem {
         quantity: number,
         category: string,
         audioType: string,
-        diameter?: number,
-        power?: number,
-        polarPattern?: string,
-        micType?: string,
-        speakerType?: string,
-        consoleType?: string,
-        channelQty?: number,
-        other?: string,
+        micType: string,
+        polarPattern: string,
     ) {
         super(id, model, brand, quantity, category);
-        this.audioType = audioType;
+        this.audioCategory = audioType;
+        this.micType = micType;
+        this.polarPattern = polarPattern;
+    }
+}
+
+export class AudioSpeaker extends Article implements AudioSpeakerItem {
+    audioCategory: string;
+    speakerType: string;
+    diameter: number;
+    power: number;
+    energyConnection: string;
+    audioConnection: string;
+
+    constructor(
+        id: string,
+        model: string,
+        brand: string,
+        quantity: number,
+        category: string,
+        audioType: string,
+        diameter: number,
+        power: number,
+        speakerType: string,
+        energyConnection: string,
+        audioConnection: string,
+    ) {
+        super(id, model, brand, quantity, category);
+        this.audioCategory = audioType;
         this.diameter = diameter;
         this.power = power;
-        this.polarPattern = polarPattern;
-        this.micType = micType;
         this.speakerType = speakerType;
+        this.energyConnection = energyConnection;
+        this.audioConnection = audioConnection;
+    }
+}
+
+export class AudioConsole extends Article implements AudioConsoleItem {
+    audioCategory: string;
+    consoleType: string;
+    channelQty: number;
+
+    constructor(
+        id: string,
+        model: string,
+        brand: string,
+        quantity: number,
+        category: string,
+        audioType: string,
+        consoleType: string,
+        channelQty: number,
+    ) {
+        super(id, model, brand, quantity, category);
+        this.audioCategory = audioType;
         this.consoleType = consoleType;
         this.channelQty = channelQty;
-        this.other = other;
+    }
+}
+
+// Clases de iluminación
+
+export class LightningBulb extends Article implements LightningBulbItem {
+    lightningCategory: string;
+    lightningType: string;
+    consumption: number;
+    power: number;
+    energyConnection: string;
+
+    constructor(
+        id: string,
+        model: string,
+        brand: string,
+        quantity: number,
+        category: string,
+        lightningCategory: string,
+        lightningType: string,
+        consumption: number,
+        power: number,
+        energyConnection: string,
+    ) {
+        super(id, model, brand, quantity, category);
+        this.lightningCategory = lightningCategory;
+        this.lightningType = lightningType;
+        this.consumption = consumption;
+        this.power = power;
+        this.energyConnection = energyConnection;
+    }
+}
+
+export class LightningConsole extends Article implements LightningConsoleItem {
+    lightningCategory: string;
+    consoleType: string;
+    universeQty: number;
+
+    constructor(
+        id: string,
+        model: string,
+        brand: string,
+        quantity: number,
+        category: string,
+        lightningCategory: string,
+        consoleType: string,
+        universeQty: number,
+    ) {
+        super(id, model, brand, quantity, category);
+        this.lightningCategory = lightningCategory;
+        this.consoleType = consoleType;
+        this.universeQty = universeQty;
     }
 }
 
@@ -102,52 +196,82 @@ export class EnergyArticle extends Article implements EnergyItem {
     }
 }
 
-export class LightingArticle extends Article implements LightingItem {
-    category: string;
-    lightingType?: string;
-    consumption?: number;
+// Clases de video
+
+export class VideoScreen extends Article implements VideoScreenItem {
+    videoCategory: string;
+    pixels: string;
+    size: string;
+    cardType: string;
 
     constructor(
         id: string,
         model: string,
         brand: string,
         quantity: number,
-        type: string,
         category: string,
-        lightingType?: string,
-        consumption?: number,
+        videoCategory: string,
+        pixels: string,
+        size: string,
+        cardType: string,
     ) {
-        super(id, model, brand, quantity, type);
-        this.category = category;
-        this.lightingType = lightingType;
-        this.consumption = consumption;
+        super(id, model, brand, quantity, category);
+        this.videoCategory = videoCategory;
+        this.pixels = pixels;
+        this.size = size;
+        this.cardType = cardType;
     }
 }
 
-export class VideoArticle extends Article implements VideoItem {
-    category: string;
-    resolution?: string;
-    pixels?: string;
+export class VideoCamera extends Article implements VideoCameraItem {
+    videoCategory: string;
+    resolution: string;
 
     constructor(
         id: string,
         model: string,
         brand: string,
         quantity: number,
-        type: string,
         category: string,
-        resolution?: string,
-        pixels?: string,
+        videoCategory: string,
+        resolution: string,
     ) {
-        super(id, model, brand, quantity, type);
-        this.category = category;
+        super(id, model, brand, quantity, category);
+        this.videoCategory = videoCategory;
         this.resolution = resolution;
-        this.pixels = pixels;
+    }
+}
+
+export class VideoConsole extends Article implements VideoConsoleItem {
+    videoCategory: string;
+    functionality: string;
+    inputQty: number;
+    outputQty: number;
+    mainInOutType: string;
+
+    constructor(
+        id: string,
+        model: string,
+        brand: string,
+        quantity: number,
+        category: string,
+        videoCategory: string,
+        functionality: string,
+        inputQty: number,
+        outputQty: number,
+        mainInOutType: string,
+    ) {
+        super(id, model, brand, quantity, category);
+        this.videoCategory = videoCategory;
+        this.functionality = functionality;
+        this.inputQty = inputQty;
+        this.outputQty = outputQty;
+        this.mainInOutType = mainInOutType;
     }
 }
 
 export class StructureArticle extends Article implements StructureItem {
-    category: string;
+    structureCategory: string;
     length?: number;
     diameter?: string;
 
@@ -156,13 +280,13 @@ export class StructureArticle extends Article implements StructureItem {
         model: string,
         brand: string,
         quantity: number,
-        type: string,
         category: string,
+        structureCategory: string,
         length?: number,
         diameter?: string,
     ) {
-        super(id, model, brand, quantity, type);
-        this.category = category;
+        super(id, model, brand, quantity, category);
+        this.structureCategory = structureCategory;
         this.length = length;
         this.diameter = diameter;
     }
@@ -179,13 +303,13 @@ export class CableArticle extends Article implements CableItem {
         model: string,
         brand: string,
         quantity: number,
-        type: string,
+        category: string,
         length: number,
         diameter: string,
         connector1: string,
         connector2: string,
     ) {
-        super(id, model, brand, quantity, type);
+        super(id, model, brand, quantity, category);
         this.length = length;
         this.diameter = diameter;
         this.connector1 = connector1;
@@ -201,10 +325,10 @@ export class OtherArticle extends Article implements OtherItem {
         model: string,
         brand: string,
         quantity: number,
-        type: string,
+        category: string,
         description: string,
     ) {
-        super(id, model, brand, quantity, type);
+        super(id, model, brand, quantity, category);
         this.description = description;
     }
 }
