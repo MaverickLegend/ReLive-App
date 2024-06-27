@@ -46,3 +46,7 @@ const updateBrand = () => emit('update:brand', brand.value);
 const updateQuantity = () => emit('update:quantity', quantity.value);
 
 </script>
+
+<style scoped lang="scss">
+@import '../../../styles/components/_forms.scss'
+</style>

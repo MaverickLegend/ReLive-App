@@ -16,3 +16,7 @@ import { LightingArticle } from '@/models/article.class';
 const consoleType = ref(0);
 
 </script>
+
+<style scoped lang="scss">
+@import '../../../../styles/components/_forms.scss'
+</style>

@@ -1,0 +1,65 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+
+    .modal-content {
+        background-color: $color-beige;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 5% auto;
+        border: 1px solid $color-mustard-yellow;
+        width: 60%;
+        border-radius: 1rem;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+        .close {
+            color: $color-dark-gold;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .form-container {
+            width: 100%;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            .inputs {
+                display: flex;
+                flex-direction: column;
+                gap: $spacing-unit;
+                width: 50%;
+
+                input,
+                select,
+                textarea {
+                    width: 100%;
+                    padding: 0.5rem;
+                    border-radius: 0.2rem;
+                    border: 1px solid $color-dark-gray;
+                    background-color: white;
+                    text-align: center
+                }
+            }
+
+            .btn {
+                @include button-styles(#fff, $color-dark-gold);
+            }
+
+        }
+    }
+}

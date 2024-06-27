@@ -40,3 +40,7 @@ const selectedVoltage = ref('');
 const selectedTakeType = ref('');
 const selectedOther = ref('');
 </script>
+
+<style scoped lang="scss">
+@import '../../../../styles/components/_forms.scss'
+</style>

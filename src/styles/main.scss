@@ -1,26 +1,26 @@
-// Abstracts
-@import 'abstracts/variables';
-@import 'abstracts/mixins';
+// // Abstracts
+// @import 'abstracts/variables';
+// @import 'abstracts/mixins';
 
-// Base
-@import 'base/reset';
-@import 'base/typography';
+// // Base
+// @import 'base/reset';
+// @import 'base/typography';
 
-// Layout
-@import 'layout/header';
-@import 'layout/sidebar';
-@import 'layout/grid';
+// // Layout
+// @import 'layout/header';
+// @import 'layout/sidebar';
+// @import 'layout/grid';
 
-// Components
-@import 'components/buttons';
-@import 'components/forms';
+// // Components
+// @import 'components/buttons';
+// @import 'components/forms';
 
-// Pages
-@import 'pages/home';
-// @import 'pages/formComponent';
+// // Pages
+// @import 'pages/home';
+// // @import 'pages/formComponent';
 
-// Themes
-@import 'themes/theme';
+// // Themes
+// @import 'themes/theme';
 
 .app {
     height: 100vh;

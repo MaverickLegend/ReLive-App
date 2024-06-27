@@ -67,6 +67,8 @@ const handleAddArticle = async () => {
     selectedChannels.value = 0;
 };
 
-
-
 </script>
+
+<style scoped lang="scss">
+@import '../../../../styles/components/_forms.scss'
+</style>

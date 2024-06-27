@@ -56,8 +56,9 @@ export interface EnergyBoardItem extends Item {
 //  ---------------- Categoría Iluminación ----------------
 
 export interface LightningBulbItem extends Item {
-    lightningCategory: string; // Par, fresnel, led, consola, etcétera
+    lightningCategory: string; // Foco, consola, etcétera
     lightningType: string; // Tipo de luz
+    focusType: string; // Tipo de foco
     consumption: number; // Consumo
     power: number; // Potencia
     energyConnection: string; // Conexión de energía

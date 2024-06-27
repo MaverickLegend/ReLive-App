@@ -69,5 +69,5 @@ const currentComponent = computed(() => {
 </script>
 
 <style lang="scss">
-@import '../../styles/pages/formComponent.scss'
+@import '../../styles/pages/_formComponent.scss'
 </style>

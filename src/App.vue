@@ -20,7 +20,7 @@ import './styles/main.scss'
     </header>
     <aside class="sidebar">
       <RouterLink to="/inventory">Inventario</RouterLink>
-      <h4>Bodega</h4>
+      <RouterLink to="/bodega">Bodega</RouterLink>
       <h4>Trabajadores</h4>
       <h4>Cotización</h4>
     </aside>
@@ -31,4 +31,5 @@ import './styles/main.scss'
 <style scoped lang="scss">
 @import './styles/layout/grid.scss';
 @import './styles/layout/header.scss';
+@import './styles/layout/sidebar.scss';
 </style>

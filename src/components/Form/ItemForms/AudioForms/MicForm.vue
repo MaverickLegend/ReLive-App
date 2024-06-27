@@ -69,3 +69,7 @@ const handleAddArticle = async () => {
 };
 
 </script>
+
+<style scoped lang="scss">
+@import '../../../../styles/components/_forms.scss'
+</style>

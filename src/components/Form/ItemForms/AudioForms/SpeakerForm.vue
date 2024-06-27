@@ -38,6 +38,8 @@ const selectedPower = '';
 const selectedSize = '';
 const selectedEnergyConnection = '';
 
-
-
 </script>
+
+<style scoped lang="scss">
+@import '../../../../styles/components/_forms.scss'
+</style>

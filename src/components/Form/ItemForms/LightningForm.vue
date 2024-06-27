@@ -41,3 +41,7 @@ const currentComponent = computed(() => {
 });
 
 </script>
+
+<style scoped lang="scss">
+@import '../../../styles/components/_forms.scss'
+</style>

@@ -121,6 +121,10 @@ export const useCategoryStore = defineStore('categoryStore', {
                 { label: 'Halógeno', value: 'Halogen' },
                 { label: 'Incandescente', value: 'Incandescent' },
                 { label: 'Láser', value: 'Laser' },
+                { label: 'Arco de Xenón', value: 'XenonArc' },
+                { label: 'Descarga de Gas', value: 'GasDischarge' },
+                { label: 'Fluorescente', value: 'Fluorescent' },
+                { label: 'Plasma', value: 'Plasma' },
                 { label: 'Otros', value: 'Others' },
             ],
             energyConnection: [

@@ -1,5 +1,10 @@
 <template>
     <div class="container">
+        <nav class="nav">
+            <router-link to="/inventory/add-article" class="btn nav-item">Agregar artículo</router-link>
+            <router-link to="/inventory/generate-checklist" class="btn mav-item">Generar checklist</router-link>
+            <router-link to="/inventory/print-selection" class="btn nav-item">Imprimir selección</router-link>
+        </nav>
         <h1>Inventario</h1>
         <div class="grid-container">
             <div class="grid-item" v-for="(article, index) in articles" :key="index">
@@ -17,23 +22,26 @@
 import { ref, onMounted } from 'vue';
 import { db } from '@/firebase';
 import { collection, getDocs } from 'firebase/firestore';
-import type { DocumentData } from 'firebase/firestore';
+import type { Item } from '@/types/interfaces';
 
-
-const articles = ref<DocumentData[]>([]);
+const articles = ref<Item[]>([]);
 
 const fetchInventory = async () => {
-    const querySnapshot = await getDocs(collection(db, 'articles'));
-    querySnapshot.forEach((doc) => {
-        return articles.value.push(doc.data());
-    });
-}
+    try {
+        const querySnapshot = await getDocs(collection(db, 'articles'));
+        articles.value = querySnapshot.docs.map(doc => doc.data()) as Item[];
+    }
+    catch (error) {
+        console.error('Error al obtener artículos:', error);
+    };
+};
 
 onMounted(() => {
     fetchInventory();
 });
+
 </script>
 
 <style scoped lang="scss">
-@import '@/styles/pages/myInventory.scss';
+@import '../../styles/pages/myInventory.scss'
 </style>

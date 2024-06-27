@@ -19,3 +19,7 @@ import CommonForm from '../CommonForm.vue';
 const selectedOther = ref('');
 
 </script>
+
+<style scoped lang="scss">
+@import '../../../../styles/components/_forms.scss'
+</style>

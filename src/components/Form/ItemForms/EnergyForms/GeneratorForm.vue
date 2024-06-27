@@ -36,3 +36,7 @@ const selectedTakeType = ref('');
 
 
 </script>
+
+<style scoped lang="scss">
+@import '../../../../styles/components/_forms.scss'
+</style>

@@ -121,20 +121,23 @@ export class LightningBulb extends Article implements LightningBulbItem {
         model: string,
         brand: string,
         quantity: number,
-        category: string,
-        lightningCategory: string,
-        lightningType: string,
-        consumption: number,
-        power: number,
-        energyConnection: string,
+        category: string, // Iluminación
+        lightningCategory: string, // Tipo de iluminación (foco, consola, etc)
+        lightningType: string, // Tipo de foco (led, halógeno, etc)
+        focusType: string, // Tipo de foco (beam, wash, etc)
+        consumption: number, // Consumo en watts
+        power: number, // Potencia en lumens
+        energyConnection: string, // Tipo de conexión eléctrica
     ) {
         super(id, model, brand, quantity, category);
         this.lightningCategory = lightningCategory;
         this.lightningType = lightningType;
+        this.focusType = focusType;
         this.consumption = consumption;
         this.power = power;
         this.energyConnection = energyConnection;
     }
+    focusType: string;
 }
 
 export class LightningConsole extends Article implements LightningConsoleItem {
