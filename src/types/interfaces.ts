@@ -1,5 +1,5 @@
 export interface Item {
-    id: string; // Identificador único
+    // id: string; // Identificador único
     model: string; // Modelo
     brand: string; // Marca
     quantity: number; // Cantidad

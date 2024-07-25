@@ -48,7 +48,6 @@ const updateQuantity = (value: number) => {
 
 const handleAddArticle = async () => {
     const newArticle = new AudioMic(
-        uuidv4(),
         model.value,
         brand.value,
         quantity.value,
@@ -57,7 +56,7 @@ const handleAddArticle = async () => {
         selectedMicType.value,
         selectedPolarPattern.value
     );
-    await addArticle(newArticle);
+    await addArticle('microphone', newArticle);
     console.log(newArticle);
 
     // Reset form values

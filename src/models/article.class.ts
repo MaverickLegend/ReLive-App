@@ -15,14 +15,14 @@ import {
 } from '../types/interfaces';
 
 export default class Article implements Item {
-    id: string;
+    // id: string;
     model: string;
     brand: string;
     quantity: number;
     category: string;
 
-    constructor(id: string, model: string, brand: string, quantity: number, category: string) {
-        this.id = id;
+    constructor(model: string, brand: string, quantity: number, category: string) {
+        // this.id = id;
         this.model = model;
         this.brand = brand;
         this.quantity = quantity;
@@ -38,7 +38,7 @@ export class AudioMic extends Article implements AudioMicItem {
     polarPattern: string;
 
     constructor(
-        id: string,
+        // id: string,
         model: string,
         brand: string,
         quantity: number,
@@ -47,7 +47,7 @@ export class AudioMic extends Article implements AudioMicItem {
         micType: string,
         polarPattern: string,
     ) {
-        super(id, model, brand, quantity, category);
+        super(model, brand, quantity, category);
         this.audioCategory = audioType;
         this.micType = micType;
         this.polarPattern = polarPattern;
