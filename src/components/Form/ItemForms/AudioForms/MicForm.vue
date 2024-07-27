@@ -21,7 +21,6 @@
 <script setup lang="ts">
 import { useCategoryStore } from '@/stores/categoryStore';
 import { ref } from 'vue';
-import { v4 as uuidv4 } from 'uuid';
 import CommonForm from '../CommonForm.vue';
 import { addArticle } from '../../useAddArticle';
 import { AudioMic } from '@/models/article.class';
