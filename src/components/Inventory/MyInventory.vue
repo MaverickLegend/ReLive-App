@@ -2,43 +2,48 @@
     <div class="container">
         <nav class="nav">
             <router-link to="/inventory/add-article" class="btn nav-item">Agregar artículo</router-link>
-            <router-link to="/inventory/generate-checklist" class="btn mav-item">Generar checklist</router-link>
-            <router-link to="/inventory/print-selection" class="btn nav-item">Imprimir selección</router-link>
+            <!-- <router-link to="/inventory/generate-checklist" class="btn mav-item">Generar checklist</router-link>
+            <router-link to="/inventory/print-selection" class="btn nav-item">Imprimir selección</router-link> -->
         </nav>
         <h1>Inventario</h1>
         <div class="grid-container">
-            <div class="grid-item" v-for="(article, index) in articles" :key="index">
-                <h1>{{ article.model }}</h1>
-                <h3>{{ article.brand }}</h3>
-                <span>Stock: {{ article.quantity }}</span>
-                <span>Categoría: {{ article.category }}</span>
-                <button class="btn">Detalles</button>
+            <!-- <div v-if="inventory.loading">Loading...</div>
+            <div v-if="inventory.error">{{ inventory.error }}</div>
+            <div v-if="!inventory.loading && !inventory.error"> -->
+            <div class="grid-item" v-for="(item, index) in inventory.items" :key="index">
+                <h1>{{ item.model }}</h1>
+                <h3>{{ item.brand }}</h3>
+                <span>Stock: {{ item.quantity }}</span>
+                <span>Categoría: {{ item.category }}</span>
+                <button class="btn" @click="handleItemDetails(item.id, item.itemType)">Detalles</button>
             </div>
+            <div v-if="itemDetails">
+                <pre>{{ itemDetails }}</pre>
+            </div>
+            <!-- </div> -->
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import { db } from '@/firebase';
-import { collection, getDocs } from 'firebase/firestore';
-import type { Item } from '@/types/interfaces';
 
-const articles = ref<Item[]>([]);
 
-const fetchInventory = async () => {
-    try {
-        const querySnapshot = await getDocs(collection(db, 'articles'));
-        articles.value = querySnapshot.docs.map(doc => doc.data()) as Item[];
-    }
-    catch (error) {
-        console.error('Error al obtener artículos:', error);
-    };
-};
+import { onMounted, ref } from 'vue';
+import { useInventoryStore } from '@/stores/inventoryStore';
+// import type { Item } from '@/types/interfaces';
+
+const inventory = useInventoryStore();
+const itemDetails = ref<any>(null);
 
 onMounted(() => {
-    fetchInventory();
+    inventory.fetchInventory();
 });
+
+const handleItemDetails = async (id: string, itemType: string) => {
+    const details = await inventory.fetchItemDetails(itemType, id);
+    console.log('Item details:', details);
+    itemDetails.value = details;
+};
 
 </script>
 
