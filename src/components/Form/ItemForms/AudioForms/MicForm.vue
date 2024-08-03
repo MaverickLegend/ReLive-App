@@ -19,13 +19,13 @@
 </template>
 
 <script setup lang="ts">
-import { useCategoryStore } from '@/stores/categoryStore';
-import { ref } from 'vue';
 import CommonForm from '../CommonForm.vue';
-import { addArticle } from '../../useAddArticle';
+import { ref } from 'vue';
+import { audioCategories } from '.';
 import { AudioMic } from '@/models/article.class';
+import { addArticle } from '../../useAddArticle';
 
-const { micType, polarPattern } = useCategoryStore().audioCategories;
+const { micType, polarPattern } = audioCategories
 
 const selectedMicType = ref<string>('');
 const selectedPolarPattern = ref<string>('');

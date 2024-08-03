@@ -19,13 +19,13 @@
         <div class="inputs">
             <label for="energyConnection">Conexión de energía:</label>
             <select v-model="selectedEnergyConnection">
-                <option v-for="(connection, index) in connectionType" :key="index">{{ connection.label }}</option>
+                <option v-for="(connection, index) in energyConnection" :key="index">{{ connection.label }}</option>
             </select>
         </div>
         <div class="inputs">
             <label for="audioConnection">Conexión de audio:</label>
             <select v-model="selectedAudioConnection">
-                <option v-for="(connection, index) in connectionType" :key="index">{{ connection.label }}</option>
+                <option v-for="(connection, index) in signalConnection" :key="index">{{ connection.label }}</option>
             </select>
         </div>
         <button class="btn" @click="handleAddArticle">Agregar artículo</button>
@@ -33,14 +33,15 @@
 </template>
 
 <script setup lang="ts">
-import { useCategoryStore } from '@/stores/categoryStore';
+import { audioCategories } from '.';
+// import { useCategoryStore } from '@/stores/categoryStore';
 import { ref } from 'vue';
 import CommonForm from '../CommonForm.vue';
 import { AudioSpeaker } from '@/models/article.class';
 import { addArticle } from '../../useAddArticle';
 
-
-const { speakerType, connectionType } = useCategoryStore().audioCategories;
+const { speakerType, energyConnection, signalConnection } = audioCategories;
+// const { speakerType, connectionType } = useCategoryStore().audioCategories;
 const selectedSpeakerType = ref<string>('');
 const selectedSize = ref<number>(0);
 const selectedPower = ref<number>(0);

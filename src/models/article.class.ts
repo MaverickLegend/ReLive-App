@@ -106,11 +106,11 @@ export class AudioConsole extends Article implements AudioConsoleItem {
 
 export class LightningBulb extends Article implements LightningBulbItem {
     lightningCategory: string;
-    lightningType: string;
-    consumption: number;
-    power: number;
-    energyConnection: string;
+    bulbType: string;
     focusType: string;
+    amperage: number;
+    wattage: number;
+    energyConnection: string;
 
     constructor(
         model: string,
@@ -118,18 +118,18 @@ export class LightningBulb extends Article implements LightningBulbItem {
         quantity: number,
         category: string, // Iluminación
         lightningCategory: string, // Tipo de iluminación (foco, consola, etc)
-        lightningType: string, // Tipo de foco (led, halógeno, etc)
+        bulbType: string, // Tipo de foco (led, halógeno, etc)
         focusType: string, // Tipo de foco (beam, wash, etc)
-        consumption: number, // Consumo en watts
-        power: number, // Potencia en lumens
+        amperage: number, // Consumo en amperaje
+        wattage: number, // Potencia
         energyConnection: string, // Tipo de conexión eléctrica
     ) {
         super(model, brand, quantity, category);
         this.lightningCategory = lightningCategory;
-        this.lightningType = lightningType;
+        this.bulbType = bulbType;
         this.focusType = focusType;
-        this.consumption = consumption;
-        this.power = power;
+        this.amperage = amperage;
+        this.wattage = wattage;
         this.energyConnection = energyConnection;
     }
 }

@@ -30,7 +30,6 @@
 
 import { onMounted, ref } from 'vue';
 import { useInventoryStore } from '@/stores/inventoryStore';
-// import type { Item } from '@/types/interfaces';
 
 const inventory = useInventoryStore();
 const itemDetails = ref<any>(null);
@@ -48,5 +47,5 @@ const handleItemDetails = async (id: string, itemType: string) => {
 </script>
 
 <style scoped lang="scss">
-@import '../../styles/pages/myInventory.scss'
+@import '../../styles/pages/myInventory'
 </style>

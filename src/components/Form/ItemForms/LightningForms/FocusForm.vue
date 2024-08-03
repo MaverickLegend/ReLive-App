@@ -4,7 +4,7 @@
             @update:brand="updateBrand" @update:quantity="updateQuantity" />
         <div class="inputs">
             <label for="focusType">Tipo de foco</label>
-            <select v-model="selectedLightningType" id="focusType">
+            <select v-model="selectedBulbType" id="focusType">
                 <option v-for="focus in focusType" :key="focus.value">{{ focus.label }}</option>
             </select>
         </div>
@@ -15,12 +15,12 @@
             </select>
         </div>
         <div class="inputs">
-            <label for="consumption">Consumo</label>
-            <input type="number" v-model="selectedConsumption" id="consumption" placeholder="Watts">
+            <label for="consumption">Amperaje</label>
+            <input type="number" v-model="selectedAmperage" id="consumption" placeholder="Amperes">
         </div>
         <div class="inputs">
             <label for="power">Potencia</label>
-            <input type="number" v-model="selectedPower" id="power" placeholder="Watts">
+            <input type="number" v-model="selectedWattage" id="power" placeholder="Watts">
         </div>
         <div class="inputs">
             <label for="energyConnection">Conexión de energía</label>
@@ -35,7 +35,6 @@
 <script setup lang="ts">
 import { useCategoryStore } from '@/stores/categoryStore';
 import { ref } from 'vue';
-import { v4 as uuidv4 } from 'uuid';
 import CommonForm from '../CommonForm.vue';
 import { addArticle } from '../../useAddArticle';
 import { LightningBulb } from '@/models/article.class';
@@ -46,10 +45,10 @@ const { focusType, energyType, energyConnection } = categoryStore;
 const model = ref<string>('');
 const brand = ref<string>('');
 const quantity = ref<number>(0);
-const selectedLightningType = ref<string>('');
+const selectedBulbType = ref<string>('');
 const selectedFocusType = ref<string>('');
-const selectedConsumption = ref<number>(0);
-const selectedPower = ref<number>(0);
+const selectedAmperage = ref<number>(0);
+const selectedWattage = ref<number>(0);
 const selectedEnergyConnection = ref('');
 
 const updateModel = (value: string) => {
@@ -66,29 +65,28 @@ const updateQuantity = (value: number) => {
 
 const handleAddArticle = async () => {
     const newArticle = new LightningBulb(
-        uuidv4(),
         model.value,
         brand.value,
         quantity.value,
         'Lightning',
         'Focus',
-        selectedLightningType.value,
+        selectedBulbType.value,
         selectedFocusType.value,
-        selectedConsumption.value,
-        selectedPower.value,
+        selectedAmperage.value,
+        selectedWattage.value,
         selectedEnergyConnection.value
     );
-    await addArticle(newArticle);
+    await addArticle('light', newArticle);
     console.log(newArticle);
 
     // Reset form values
     model.value = '';
     brand.value = '';
     quantity.value = 0;
-    selectedLightningType.value = '';
+    selectedBulbType.value = '';
     selectedFocusType.value = '';
-    selectedConsumption.value = 0;
-    selectedPower.value = 0;
+    selectedAmperage.value = 0;
+    selectedWattage.value = 0;
     selectedEnergyConnection.value = '';
 };
 

@@ -56,10 +56,10 @@ export interface EnergyBoardItem extends Item {
 
 export interface LightningBulbItem extends Item {
     lightningCategory: string; // Foco, consola, etcétera
-    lightningType: string; // Tipo de luz
+    bulbType: string; // Tipo de luz
     focusType: string; // Tipo de foco
-    consumption: number; // Consumo
-    power: number; // Potencia
+    amperage: number; // Consumo
+    wattage: number; // Potencia
     energyConnection: string; // Conexión de energía
 }
 
