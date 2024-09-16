@@ -42,13 +42,13 @@ import { addArticle } from '../../useAddArticle';
 
 const { speakerType, energyConnection, signalConnection } = audioCategories;
 // const { speakerType, connectionType } = useCategoryStore().audioCategories;
-const selectedSpeakerType = ref<string>('');
-const selectedSize = ref<number>(0);
-const selectedPower = ref<number>(0);
-const selectedEnergyConnection = ref<string>('');
-const selectedAudioConnection = ref<string>('');
+let selectedSpeakerType: string = '';
+let selectedSize: number = 0;
+let selectedPower: number = 0;
+let selectedEnergyConnection: string = ''
+let selectedAudioConnection: string = ''
 const model = ref<string>('');
-const brand = ref<string>('');
+const brand = ref<string>('')
 const quantity = ref<number>(0);
 
 const updateModel = (value: string) => {
@@ -70,11 +70,11 @@ const handleAddArticle = async () => {
         quantity.value,
         'Audio', // category
         'Speaker', // audioType
-        selectedSpeakerType.value,
-        selectedSize.value,
-        selectedPower.value,
-        selectedEnergyConnection.value,
-        selectedAudioConnection.value
+        selectedSpeakerType,
+        selectedSize,
+        selectedPower,
+        selectedEnergyConnection,
+        selectedAudioConnection
     );
     await addArticle('speaker', newArticle);
     console.log(newArticle);
@@ -83,11 +83,11 @@ const handleAddArticle = async () => {
     model.value = '';
     brand.value = '';
     quantity.value = 0;
-    selectedSpeakerType.value = '';
-    selectedSize.value = 0;
-    selectedPower.value = 0;
-    selectedEnergyConnection.value = '';
-    selectedAudioConnection.value = '';
+    selectedSpeakerType = '';
+    selectedSize = 0;
+    selectedPower = 0;
+    selectedEnergyConnection = '';
+    selectedAudioConnection = '';
 };
 
 </script>

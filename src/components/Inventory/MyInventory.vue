@@ -2,8 +2,6 @@
     <div class="container">
         <nav class="nav">
             <router-link to="/inventory/add-article" class="btn nav-item">Agregar artículo</router-link>
-            <!-- <router-link to="/inventory/generate-checklist" class="btn mav-item">Generar checklist</router-link>
-            <router-link to="/inventory/print-selection" class="btn nav-item">Imprimir selección</router-link> -->
         </nav>
         <h1>Inventario</h1>
         <div class="grid-container">

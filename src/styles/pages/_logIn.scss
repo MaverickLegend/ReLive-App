@@ -1,0 +1,66 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+
+    .l-container {
+        background: $gradient-yellow-gold;
+        height: 100%;
+        width: 50%;
+        @include flex-center;
+    }
+
+    .r-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 50%;
+        height: 100%;
+        background-color: $gradient-white-light-gray;
+
+        .r-title {
+            font-size: 2.5rem;
+            color: $color-black;
+            margin-bottom: 1rem;
+            letter-spacing: .5rem;
+        }
+
+        .r-form {
+
+            .r-input {
+
+                label {
+                    font-size: 1.2rem;
+                    color: $color-black;
+                }
+
+                input {
+                    margin: 1rem 0;
+                    width: 100%;
+                    padding: 0.5rem;
+                    border: 1px solid $color-black;
+                    border-radius: 5px;
+                }
+            }
+
+            .r-checkbox {
+                @include checkbox-styles($color-black);
+            }
+
+            .btn-container {
+                @include flex-center;
+
+                .btn {
+                    @include button-styles($color-black, $color-white);
+                }
+
+            }
+        }
+    }
+}

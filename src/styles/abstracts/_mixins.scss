@@ -7,7 +7,7 @@
 @mixin button-styles($color, $bg-color) {
     color: $color;
     background-color: $bg-color;
-    border: none;
+    border: 1px solid $color;
     border-radius: 0.2rem;
     letter-spacing: 0.2rem;
     font-size: 1rem;
@@ -19,7 +19,23 @@
 
     &:hover {
         background-color: darken($bg-color, 5%);
-        font-size: 1.2rem;
+        color: $bg-color;
+        background-color: $color;
         transition: all 0.3s ease;
+    }
+}
+
+@mixin checkbox-styles($color) {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+
+    label {
+        font-size: 1rem;
+        color: $color;
+    }
+
+    input {
+        margin-right: 0.5rem;
     }
 }
