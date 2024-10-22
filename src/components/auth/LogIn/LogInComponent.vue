@@ -8,29 +8,42 @@
         <!-- Right: Login Form -->
         <div class="r-container">
             <h1 class="r-title">Login</h1>
-            <form action="#" method="POST" class="r-form">
+            <form @submit.prevent="onLogin" class="r-form">
                 <!-- Username Input -->
                 <div class="r-input">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username">
+                    <label for="email">Correo</label>
+                    <input 
+                    v-model="myForm.mail"
+                    ref="emailInputRef"
+            
+                    id="email" 
+                    name="email"
+                    >
+                    
                 </div>
                 <!-- Password Input -->
                 <div class="r-input">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password">
+                    <label for="password">Contraseña</label>
+                    <input 
+                    v-model="myForm.password" 
+                    ref="passwordInputRef"
+                    type="password" 
+                    id="password" 
+                    name="password">
                 </div>
                 <!-- Remember Me Checkbox -->
                 <div class="r-checkbox">
-                    <input type="checkbox" id="remember" name="remember">
-                    <label for="remember">Remember Me</label>
+
+                    <input v-model="myForm.remember" type="checkbox" id="remember" name="remember">
+                    <label for="remember">Recordar usuario</label>
                 </div>
                 <!-- Forgot Password Link -->
                 <div class="r-forgot">
-                    <a href="#">Forgot Password?</a>
+                    <a href="#">¿Olvidaste tu contraseña?</a>
                 </div>
                 <!-- Login Button -->
                 <div class="btn-container">
-                    <button type="button" class="btn" @click="onLogin">Login</button>
+                    <button type="submit" class="btn">Login</button>
                 </div>
             </form>
         </div>
@@ -38,16 +51,55 @@
 </template>
 
 <script setup lang="ts">
+import { reactive, ref, watchEffect } from 'vue';
 import { useRouter } from 'vue-router';
+import { useAuthStore } from './stores/auth.store';
+import { useToast } from 'vue-toastification';
 
-const router = useRouter();
+const authStore = useAuthStore();
+const emailInputRef = ref<HTMLInputElement|null>(null);
+const passwordInputRef = ref<HTMLInputElement | null>(null);
+const toast = useToast();
 
-const onLogin = () => {
-    sessionStorage.setItem('isAuthenticated', 'true');
-    router.replace({
-        name: 'Home',
-    });
-}
+const myForm = reactive({
+    mail: '',
+    password: '',
+    remember: false,
+});
+
+
+
+const onLogin = async () => {
+    if (!myForm.mail || !myForm.password) {
+        toast.error('Por favor, rellene todos los campos');
+        return emailInputRef.value?.focus();
+    }
+
+    if (!myForm.mail.includes('@') || !myForm.mail.includes('.')) {
+        toast.error('Por favor, introduzca un correo válido');
+        return emailInputRef.value?.focus();
+    }
+
+    if (myForm.remember) {
+        localStorage.setItem('mail', myForm.mail);
+    } else {
+        localStorage.removeItem('mail');
+    }
+
+    const ok = await authStore.login(myForm.mail, myForm.password);
+
+    if (ok) return;
+
+    toast.error('Credenciales incorrectas');
+};
+
+watchEffect(() => {
+    const mail = localStorage.getItem('mail');
+    if (mail) {
+        myForm.mail = mail;
+        myForm.remember = true;
+    }
+});
 
 </script>
 

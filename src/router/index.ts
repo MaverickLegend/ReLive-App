@@ -26,11 +26,6 @@ const router = createRouter({
                     name: 'inventory',
                     component: () => import('../views/InventoryView.vue'),
                 },
-                {
-                    path: '/bodega',
-                    name: 'bodega',
-                    component: () => import('../views/MyWarehouseView.vue'),
-                },
             ],
         },
         {
