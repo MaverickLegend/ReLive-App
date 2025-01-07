@@ -29,3 +29,5 @@ firebase.ts
 *.sw?
 
 *.tsbuildinfo
+
+.codegpt

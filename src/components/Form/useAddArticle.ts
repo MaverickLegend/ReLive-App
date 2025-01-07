@@ -1,7 +1,8 @@
 import type { Article } from '@/types/interfaces';
+
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:3000/api/';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL as string;
 
 export const addArticle = async (endpoint: string, articleData: Article): Promise<Article> => {
     try {

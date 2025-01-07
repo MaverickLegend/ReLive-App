@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 
-import { ref, defineEmits, defineProps, watch } from 'vue';
+import { ref, watch } from 'vue';
 
 const props = defineProps({
     modelValue: String,
@@ -24,7 +24,6 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['update:model', 'update:brand', 'update:quantity']);
-
 const model = ref(props.modelValue);
 const brand = ref(props.brandValue);
 const quantity = ref(props.quantityValue);

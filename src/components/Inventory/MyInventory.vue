@@ -32,6 +32,7 @@ import { useInventoryStore } from '@/stores/inventoryStore';
 const inventory = useInventoryStore();
 const itemDetails = ref<any>(null);
 
+
 onMounted(() => {
     inventory.fetchInventory();
 });
@@ -40,6 +41,7 @@ const handleItemDetails = async (id: string, itemType: string) => {
     const details = await inventory.fetchItemDetails(itemType, id);
     console.log('Item details:', details);
     itemDetails.value = details;
+
 };
 
 </script>
