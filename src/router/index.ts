@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
-import isAuthenticatedGuard from '@/components/auth/LogIn/guards/is-authenticated.guard';
+import isAuthenticatedGuard from '@/components/auth/guards/is-authenticated.guard';
+import isNotAuthenticatedGuard from '@/components/auth/guards/is-not-authenticated.guard';
+import isAdminGuard from '@/components/auth/admin/is-admin.guard';
+import { adminRoutes } from '@/components/auth/admin/routes';
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,8 +11,8 @@ const router = createRouter({
         {
             path: '/',
             name: 'home',
-            component: HomeView,
             beforeEnter: [isAuthenticatedGuard],
+            component: HomeView,
             children: [
                 {
                     path: '/about',
@@ -26,13 +29,16 @@ const router = createRouter({
                     name: 'inventory',
                     component: () => import('../views/InventoryView.vue'),
                 },
+                ...adminRoutes
             ],
         },
         {
             path: '/login',
             name: 'login',
+            beforeEnter: [isNotAuthenticatedGuard],
             component: () => import('../views/LogInView.vue'),
         },
+
     ],
 });
 

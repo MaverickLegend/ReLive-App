@@ -21,7 +21,6 @@ export const loginAction = async (
     try {
         const { data } = await reliveApi.post<AuthResponse>('/auth/login', { email, password });
         console.log(data);
-
         return {
             ok: true,
             user: data.user,

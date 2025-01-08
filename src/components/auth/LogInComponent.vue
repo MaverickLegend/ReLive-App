@@ -68,7 +68,6 @@ const myForm = reactive({
 });
 
 
-
 const onLogin = async () => {
     if (!myForm.mail || !myForm.password) {
         toast.error('Por favor, rellene todos los campos');
@@ -104,5 +103,5 @@ watchEffect(() => {
 </script>
 
 <style lang="scss" scoped>
-@import "../../../styles/pages/logIn.scss";
+@import "../../styles/pages/logIn.scss";
 </style>
