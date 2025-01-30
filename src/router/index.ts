@@ -29,6 +29,11 @@ const router = createRouter({
                     name: 'inventory',
                     component: () => import('../views/InventoryView.vue'),
                 },
+                {
+                    path: '/tasks',
+                    name: 'tasks',
+                    component: () => import('../views/TasksView.vue'),
+                },
                 ...adminRoutes
             ],
         },

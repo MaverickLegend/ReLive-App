@@ -7,7 +7,7 @@
         <div class="grid-container">
             <!-- <div v-if="inventory.loading">Loading...</div>
             <div v-if="inventory.error">{{ inventory.error }}</div>
-            <div v-if="!inventory.loading && !inventory.error"> -->
+            <div v-if="!inventory.loading && !inventory.error"> </div> -->
             <div class="grid-item" v-for="(item, index) in inventory.items" :key="index">
                 <h1>{{ item.model }}</h1>
                 <h3>{{ item.brand }}</h3>
@@ -15,10 +15,7 @@
                 <span>Categoría: {{ item.category }}</span>
                 <button class="btn" @click="handleItemDetails(item.id, item.itemType)">Detalles</button>
             </div>
-            <div v-if="itemDetails">
-                <pre>{{ itemDetails }}</pre>
-            </div>
-            <!-- </div> -->
+            <InfoModal :isOpen="itemDetails !== null" :data="itemDetails" :onClose="() => (itemDetails = null)" />
         </div>
     </div>
 </template>
@@ -28,6 +25,7 @@
 
 import { onMounted, ref } from 'vue';
 import { useInventoryStore } from '@/stores/inventoryStore';
+import InfoModal from '../common/InfoModal.vue';
 
 const inventory = useInventoryStore();
 const itemDetails = ref<any>(null);

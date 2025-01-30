@@ -43,8 +43,7 @@ const handleLogout = () => {
     <aside class="sidebar">
       <RouterLink to="/inventory">Inventario</RouterLink>
       <RouterLink to="/bodega">Bodega</RouterLink>
-      <h4>Trabajadores</h4>
-      <h4>Cotización</h4>
+      <RouterLink to="/tasks">Pizarrón</RouterLink>
     </aside>
     <RouterView class="main" />
   </div>
